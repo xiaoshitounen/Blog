@@ -102,7 +102,7 @@
 		              <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
 		              <div class="content">
 						  <!--点击用户名可以跳转到该用户的个人主页，下面跳转链接还需修改-->
-						  <a href="#" th:href="@{/user/{id}(id=${user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
+						  <a href="#" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
 					   </div>
 		            </div>
 					<div class="ml-6 item">
