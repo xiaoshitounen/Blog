@@ -3,9 +3,27 @@
 <head th:replace="admin/_fragments :: head(~{::title})">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>博客管理</title>
+  <title>我的博客</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
   <link rel="stylesheet" href="../../static/css/me.css">
+  <link rel="stylesheet" href="../../static/css/dashboard.css">
+  <style type="text/css">
+	.zsimage{
+	/*-------在此重定向指定用户我的中上传的图片-----*/
+	background: url(../../static/images/avatar.jpg);
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    background-size: cover;
+  }
+  </style>
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/bootstrap.bundle.js"></script>
 </head>
 <body>
 
@@ -13,14 +31,14 @@
   <nav th:replace="admin/_fragments :: menu(0)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
-        <h2 class="ui teal header item">管理后台</h2>
-        <a href="#" class="active m-item item m-mobile-hide"><i class="mini home icon"></i>博客</a>
-        <a href="#" class=" m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+        <h2 class="ui header item" style="color: white;font-family: comic sans ms;">My Blogs</h2>
+        <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>博客</a>
+        <a href="#" class=" m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
         <div class="right m-item m-mobile-hide menu">
-          <div class="ui dropdown  item">
+          <!--<div class="ui dropdown  item">
             <div class="text">
-              <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005">
+              <img class="ui avatar image" src="../../static/images/user8-128x128.jpg">
               李仁密
             </div>
             <i class="dropdown icon"></i>
@@ -28,7 +46,27 @@
               <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
             </div>
           </div>
-        </div>
+        </div>-->
+		<div class="ui dropdown item">
+		  <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+		    <span class="avatar" style="background-image: url(../../static/images/user8-128x128.jpg);"></span>
+		    <span class="ml-2 d-none d-lg-block">
+		      <span class="text-white">Mia</span>
+		      <small class="text-muted d-block mt-1">ID：53072</small>
+		    </span>
+		  </a>
+		  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+		    <a class="dropdown-item" href="changeuser.html">
+		      <i class="settings icon"></i> 修改个人信息
+		    </a>
+		    <a class="dropdown-item" href="admin/blogs.html">
+		      <i class="edit icon"></i> 管理博客
+		    </a>
+		    <a class="dropdown-item" href="#">
+		      <i class="fa icon"></i> 登出
+		    </a>
+		  </div>
+		</div>
       </div>
     </div>
     <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
@@ -39,22 +77,26 @@
 
   <!--中间内容-->
   <div  class="m-container-small m-padded-tb-big">
-    <div class="ui container">
-      <div class="ui success large  message">
+    <div class="ui container" style="font-family: comic sans ms;">
+      <div class="ui success large message" style="background:url(../../static/images/congruent_pentagon.png);border-style: none;box-shadow: 7px 7px 5px #8E8E8E;">
         <h3>Hi,</h3>
-        <p>李仁密，欢迎登录！</p>
+        <p>Mia，欢迎登录！</p>
       </div>
-
-      <img src="https://unsplash.it/1000/400?image=1005" alt="" class="ui rounded bordered fluid image">
-    </div>
+	  <div class="ui segment" style="margin:0 auto;max-height:28rem;">
+		<div class="zsimage" style="">
+         <!--<img src="../../static/images/avatar.jpg"  alt="" class="center ui rounded image">-->
+		</div>
+	  </div>
+	</div>
   </div>
 
   <br>
   <br>
 
   <!--底部footer-->
-  <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+  <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-big">
     <div class="ui center aligned container">
+		<!--
       <div class="ui inverted divided stackable grid">
         <div class="three wide column">
           <div class="ui inverted link list">
@@ -83,8 +125,8 @@
           <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客、会分享关于编程、写作、思考相关的任何内容，希望可以给来到这儿的人有所帮助...</p>
         </div>
       </div>
-      <div class="ui inverted section divider"></div>
-      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2016 - 2017 Lirenmi Designed by Lirenmi</p>
+      <div class="ui inverted section divider"></div>-->
+      <p class="m-text-thin m-text-spaced m-opacity-tiny" style="font-family: comic sans ms;font-weight: bold;">Personal Blog <br><br> Copyright © 2020 </p>
     </div>
 
   </footer>

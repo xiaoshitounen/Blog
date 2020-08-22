@@ -10,6 +10,17 @@
   <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
   <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
   <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+  <link rel="stylesheet" href="../static/css/dashboard.css" th:href="@{/css/dashboard.css}">
+  <style id="more" type="text/css">
+  	  a:hover
+  	  {
+  		color:darkblue;
+  		font-weight: bold;
+  		text-decoration: none;
+  	  }
+  </style>
+  <script src="../static/js/jquery.min.js" th:href="@{/js/jquery.min.js}"></script>
+  <script src="../static/js/bootstrap.bundle.js" th:href="@{/js/bootstrap.bundle.js}"></script>
 </head>
 <body>
 
@@ -18,20 +29,49 @@
 <nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
   <div class="ui container">
     <div class="ui inverted secondary stackable menu">
-      <h2 class="ui teal header item">Blog</h2>
-      <a href="#" th:href="@{/}" class="m-item item m-mobile-hide " th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>首页</a>
-      <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
-      <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
-      <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>
-      <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="mini info icon"></i>关于我</a>
+      <h2 class="ui white header item" style="font-family: comic sans ms;">Blog</h2>
+      <a href="#" th:href="@{/}" class="m-item item m-mobile-hide " th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
+      <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
+      <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
+      <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="clone icon"></i>归档</a>
+      <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="info icon"></i>关于我</a>
       <div class="right m-item item m-mobile-hide">
         <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
           <div class="ui icon inverted transparent input m-margin-tb-tiny">
-            <input type="text" name="query" placeholder="Search...." th:value="${query}">
+            <input type="text" name="query" placeholder="Search...." th:value="${query}" style="font-family: comic sans ms;">
             <i onclick="document.forms['search'].submit()" class="search link icon"></i>
           </div>
         </form>
       </div>
+	  <div class="ml-3 m-mobile-hide" style="top:0;bottom:0;margin: auto;">
+	  <!--登录前-->
+	    <a href="admin/login.html" style="margin: auto;" class="ml-1 btn btn-sm btn-outline-light m-item m-mobile-hide">登录</a>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <a href="javascipt:void(0);" style="margin: auto;" class="ml-2 btn btn-sm btn-outline-light m-item m-mobile-hide">注册</a>
+	    <!--登录前-->
+	    <!--登录后-->
+	    <!--<div class="dropdown">
+	    <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+	     <span class="avatar" style="background-image: url(../static/images/user8-128x128.jpg)"></span>
+	      <span class="ml-2 d-none d-lg-block">
+	       <span class="text-white">Mia</span>
+	         <small class="text-muted d-block mt-1">ID：53072</small>
+	       </span>
+	    </a>
+	    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+	      <a class="dropdown-item" href="changeuser.html">
+	       <i class="settings icon"></i> 修改个人信息
+	      </a>
+	      <a class="dropdown-item" href="admin/blogs.html">
+	       <i class="edit icon"></i> 管理博客
+	      </a>
+	      <a class="dropdown-item" href="#">
+	       <i class="fa icon"></i> 登出
+	      </a>
+	    </div>
+	   </div>-->	
+	  <!--登录后-->
+	 </div>
     </div>
   </div>
   <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
@@ -44,6 +84,7 @@
 <!--底部footer-->
 <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
   <div class="ui center aligned container">
+   <!--
     <div class="ui inverted divided stackable grid">
       <div class="three wide column">
         <div class="ui inverted link list">
@@ -57,10 +98,8 @@
         <div id="newblog-container">
           <div class="ui inverted link list" th:fragment="newblogList">
             <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item m-text-thin" th:each="blog : ${newblogs}" th:text="${blog.title}">用户故事（User Story）</a>
-            <!--/*-->
             <a href="#" class="item m-text-thin">用户故事（User Story）</a>
             <a href="#" class="item m-text-thin">用户故事（User Story）</a>
-            <!--*/-->
           </div>
         </div>
       </div>
@@ -76,8 +115,8 @@
         <p class="m-text-thin m-text-spaced m-opacity-mini" th:text="#{index.blogDescription}">这是我的个人博客、会分享关于编程、写作、思考相关的任何内容，希望可以给来到这儿的人有所帮助...</p>
       </div>
     </div>
-    <div class="ui inverted section divider"></div>
-    <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2016 - <span th:text="${#dates.year(#dates.createNow())}">2017</span> Lirenmi Designed by Lirenmi</p>
+    <div class="ui inverted section divider"></div>-->
+    	  <p class="m-text-thin m-text-spaced m-opacity-tiny" style="font-family: comic sans ms;font-weight: bold;">Personal Blog <br><br> Copyright © 2020</p>
   </div>
 
 </footer>

@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="../static/lib/prism/prism.css">
   <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
   <link rel="stylesheet" href="../static/css/me.css">
+  <link rel="stylesheet" href="../static/css/dashboard.css">
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/bootstrap.bundle.js"></script>
 </head>
 <body>
 
@@ -17,18 +20,47 @@
   <nav th:replace="_fragments :: menu(1)"  class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
-        <h2 class="ui teal header item">Blog</h2>
-        <a href="#" class="active m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
-        <div class="right m-item item m-mobile-hide">
+        <h2 class="ui header item" style="color: white;font-family: comic sans ms;">Blog</h2>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+        <div class="ml-7 m-item item m-mobile-hide">
           <div class="ui icon inverted transparent input m-margin-tb-tiny">
-            <input type="text" placeholder="Search....">
+            <input type="text" placeholder="Search...." style="font-family: comic sans ms;">
             <i class="search link icon"></i>
           </div>
-        </div>
+      		 </div>
+      		 <div class="ml-3 m-mobile-hide" style="top:0;bottom:0;margin: auto;">
+           <!--登录前-->
+      		   <a href="admin/login.html" style="margin: auto;" class="ml-1 btn btn-sm btn-outline-light m-item m-mobile-hide">登录</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      		   <a href="javascipt:void(0);" style="margin: auto;" class="ml-2 btn btn-sm btn-outline-light m-item m-mobile-hide">注册</a>
+      		   <!--登录前-->
+      		   <!--登录后-->
+      		   <!--<div class="dropdown">
+      		     <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+      		       <span class="avatar" style="background-image: url(../static/images/user8-128x128.jpg)"></span>
+      		       <span class="ml-2 d-none d-lg-block">
+      		         <span class="text-white">Mia</span>
+      		         <small class="text-muted d-block mt-1">ID：53072</small>
+      		       </span>
+      		     </a>
+      		     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+      		       <a class="dropdown-item" href="changeuser.html">
+      		         <i class="settings icon"></i> 修改个人信息
+      		       </a>
+      		       <a class="dropdown-item" href="admin/blogs.html">
+      		         <i class="edit icon"></i> 管理博客
+      		       </a>
+      		       <a class="dropdown-item" href="#">
+      		         <i class="fa icon"></i> 登出
+      		       </a>
+      		     </div>
+      		   </div>-->	
+      		   <!--登录后-->
+      		 </div>
       </div>
     </div>
     <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
@@ -39,31 +71,35 @@
   <!--中间内容-->
   <div id="waypoint" class="m-container-small m-padded-tb-big animated fadeIn">
     <div class="ui container">
-      <div class="ui top attached segment">
-        <div class="ui horizontal link list">
-          <div class="item">
-            <img src="https://unsplash.it/100/100?image=1005" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
-            <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">李仁密</a></div>
-          </div>
-          <div class="item">
-            <i class="calendar icon"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
-          </div>
-          <div class="item">
-            <i class="eye icon"></i> <span th:text="${blog.views}">2342</span>
-          </div>
-        </div>
-      </div>
       <div class="ui attached segment">
         <!--图片区域-->
-        <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid rounded image">
-      </div>
-      <div class="ui  attached padded segment">
+		<div style="max-height: 20rem;">
+			<div style="mb-2" style="height: 100%;">
+			  <img src="../static/images/banner.jpg" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid rounded image">
+			</div>
+		</div>
+	  </div>
+      <div class="ui  attached padded segment" style="font-family: comic sans ms;">
         <!--内容-->
-        <div class="ui right aligned basic segment">
-          <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
-        </div>
+		<div class="ui attached">
+		  <div class="ui horizontal link list">
+		    <div class="item">
+		      <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
+		      <div class="content"><a href="#" th:text="${blog.user.nickname}">Mia</a></div>
+		    </div>
+		    <div class="item">
+		      <i class="calendar icon mb-2"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
+		    </div>
+		    <div class="item">
+		      <i class="eye icon mb-2"></i> <span th:text="${blog.views}">2342</span>
+		    </div>
+			<div class="item">
+			  <div class="ui orange basic label" th:text="${blog.flag}" style="margin-right: 2rem;">原创</div>
+			</div>
+		  </div>
+		</div>
 
-        <h2 class="ui center aligned header" th:text="${blog.title}">关于刻意练习的清单</h2>
+        <h2 class="ui center aligned header" th:text="${blog.title}">网页搭建学习笔记</h2>
         <br>
         <!--中间主要内容部分-->
         <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:utext="${blog.content}">
@@ -456,31 +492,16 @@ h5,h6{font-size:1em;}
         </div>
 
       </div>
-      <div class="ui attached positive message" th:if="${blog.shareStatement}">
-        <!--博客信息-->
-        <div class="ui middle aligned grid">
-          <div class="eleven wide column">
-            <ui class="list">
-              <li>作者：<span th:text="${blog.user.nickname}">李仁密</span><a href="#" th:href="@{/about}" target="_blank">（联系作者）</a></li>
-              <li>发表时间：<span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}">2017-10-02 09:08</span></li>
-              <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
-              <li>公众号转载：请在文末添加作者公众号二维码</li>
-            </ui>
-          </div>
-          <div class="five wide column">
-            <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui right floated rounded bordered image" style="width: 110px">
-          </div>
-        </div>
-      </div>
+
       <div  class="ui bottom attached segment" th:if="${blog.commentabled}">
         <!--留言区域列表-->
-        <div id="comment-container"  class="ui teal segment">
+        <div id="comment-container"  class="ui blue segment">
           <div th:fragment="commentList">
             <div class="ui threaded comments" style="max-width: 100%;">
               <h3 class="ui dividing header">评论</h3>
               <div class="comment" th:each="comment : ${comments}">
                 <a class="avatar">
-                  <img src="https://unsplash.it/100/100?image=1005" th:src="@{${comment.avatar}}">
+                  <img src="../static/images/user8-128x128.jpg" th:src="@{${comment.avatar}}">
                 </a>
                 <div class="content">
                   <a class="author" >
@@ -500,7 +521,7 @@ h5,h6{font-size:1em;}
                 <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
                   <div class="comment" th:each="reply : ${comment.replyComments}">
                     <a class="avatar">
-                      <img src="https://unsplash.it/100/100?image=1005" th:src="@{${reply.avatar}}">
+                      <img src="../static/images/congruent_pentagon.png" th:src="@{${reply.avatar}}">
                     </a>
                     <div class="content">
                       <a class="author" >
@@ -524,7 +545,7 @@ h5,h6{font-size:1em;}
               <!--/*-->
               <div class="comment">
                 <a class="avatar">
-                  <img src="https://unsplash.it/100/100?image=1005">
+                  <img src="../static/images/user8-128x128.jpg">
                 </a>
                 <div class="content">
                   <a class="author">Elliot Fu</a>
@@ -541,7 +562,7 @@ h5,h6{font-size:1em;}
                 <div class="comments">
                   <div class="comment">
                     <a class="avatar">
-                      <img src="https://unsplash.it/100/100?image=1005">
+                      <img src="../static/images/congruent_pentagon.png">
                     </a>
                     <div class="content">
                       <a class="author">Jenny Hess</a>
@@ -560,7 +581,7 @@ h5,h6{font-size:1em;}
               </div>
               <div class="comment">
                 <a class="avatar">
-                  <img src="https://unsplash.it/100/100?image=1005">
+                  <img src="../static/images/user8-128x128.jpg">
                 </a>
                 <div class="content">
                   <a class="author">Joe Henderson</a>
@@ -590,7 +611,7 @@ h5,h6{font-size:1em;}
             <div class="field m-mobile-wide m-margin-bottom-small">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="nickname" placeholder="姓名" th:value="${session.user}!=null ? ${session.user.nickname}">
+                <input type="text" name="nickname" placeholder="昵称" th:value="${session.user}!=null ? ${session.user.nickname}">
               </div>
             </div>
             <div class="field m-mobile-wide m-margin-bottom-small">
@@ -600,7 +621,7 @@ h5,h6{font-size:1em;}
               </div>
             </div>
             <div class="field  m-margin-bottom-small m-mobile-wide">
-              <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+              <button id="commentpost-btn" type="button" class="ui blue button m-mobile-wide"><i class="edit icon"></i>发布</button>
             </div>
           </div>
 
@@ -611,8 +632,8 @@ h5,h6{font-size:1em;}
 
   <div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none">
     <div class="ui vertical icon buttons ">
-      <button type="button" class="ui toc teal button" >目录</button>
-      <a href="#comment-container" class="ui teal button" >留言</a>
+      <button type="button" class="ui toc blue button" >目录</button>
+      <a href="#comment-container" class="ui blue button" >留言</a>
       <button class="ui wechat icon button"><i class="weixin icon"></i></button>
       <div id="toTop-button" class="ui icon button" ><i class="chevron up icon"></i></div>
     </div>
@@ -633,8 +654,9 @@ h5,h6{font-size:1em;}
   <br>
   <br>
   <!--底部footer-->
-  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-big">
     <div class="ui center aligned container">
+		<!--
       <div class="ui inverted divided stackable grid">
         <div class="three wide column">
           <div class="ui inverted link list">
@@ -663,9 +685,9 @@ h5,h6{font-size:1em;}
           <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客、会分享关于编程、写作、思考相关的任何内容，希望可以给来到这儿的人有所帮助...</p>
         </div>
       </div>
-      <div class="ui inverted section divider"></div>
-      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2016 - 2017 Lirenmi Designed by Lirenmi</p>
-    </div>
+      <div class="ui inverted section divider"></div>-->
+	  <p class="m-text-thin m-text-spaced m-opacity-tiny" style="font-family: comic sans ms;font-weight: bold;">Personal Blog <br><br> Copyright © 2020 <span th:text="${blog.user.nickname}">Mia</span></p>
+	 </div>
 
   </footer>
 
@@ -757,7 +779,7 @@ h5,h6{font-size:1em;}
           identifier: 'nickname',
           rules: [{
             type: 'empty',
-            prompt: '请输入你的大名'
+            prompt: '请输入你的昵称'
           }]
         },
         type: {

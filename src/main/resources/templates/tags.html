@@ -6,6 +6,17 @@
   <title>标签</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
   <link rel="stylesheet" href="../static/css/me.css">
+  <link rel="stylesheet" href="../static/css/dashboard.css">
+  <style type="text/css">
+  	  a:hover
+  	  {
+  		color:dark;
+  		font-weight: bold;
+  		text-decoration: none;
+  	  }
+  </style>
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/bootstrap.bundle.js"></script>
 </head>
 <body>
 
@@ -13,18 +24,47 @@
   <nav th:replace="_fragments :: menu(3)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
-        <h2 class="ui teal header item">Blog</h2>
-        <a href="#" class=" m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
-        <a href="#" class="active m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
-        <div class="right m-item item m-mobile-hide">
+        <h2 class="ui header item" style="color: white;font-family: comic sans ms;">Blog</h2>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+        <a href="javascipt:void(0);" class="active m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+        <a href="javascipt:void(0);" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+        <div class="ml-7 m-item item m-mobile-hide">
           <div class="ui icon inverted transparent input m-margin-tb-tiny">
-            <input type="text" placeholder="Search....">
+            <input type="text" placeholder="Search...." style="font-family: comic sans ms;">
             <i class="search link icon"></i>
           </div>
-        </div>
+      		 </div>
+      		 <div class="ml-3 m-mobile-hide" style="top:0;bottom:0;margin: auto;">
+           <!--登录前-->
+      		   <a href="admin/login.html" style="margin: auto;" class="ml-1 btn btn-sm btn-outline-light m-item m-mobile-hide">登录</a>
+      				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      		   <a href="javascipt:void(0);" style="margin: auto;" class="ml-2 btn btn-sm btn-outline-light m-item m-mobile-hide">注册</a>
+      		   <!--登录前-->
+      		   <!--登录后-->
+      		   <!--<div class="dropdown">
+      		     <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+      		       <span class="avatar" style="background-image: url(../static/images/user8-128x128.jpg)"></span>
+      		       <span class="ml-2 d-none d-lg-block">
+      		         <span class="text-white">Mia</span>
+      		         <small class="text-muted d-block mt-1">ID：53072</small>
+      		       </span>
+      		     </a>
+      		     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+      		       <a class="dropdown-item" href="changeuser.html">
+      		         <i class="settings icon"></i> 修改个人信息
+      		       </a>
+      		       <a class="dropdown-item" href="admin/blogs.html">
+      		         <i class="edit icon"></i> 管理博客
+      		       </a>
+      		       <a class="dropdown-item" href="#">
+      		         <i class="fa icon"></i> 登出
+      		       </a>
+      		     </div>
+      		   </div>-->	
+      		   <!--登录后-->
+      		 </div>
       </div>
     </div>
     <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
@@ -33,27 +73,27 @@
   </nav>
 
   <!--中间内容-->
-  <div  class="m-container-small m-padded-tb-big animated fadeIn">
+  <div  class="m-container-small m-padded-tb-big animated fadeIn" style="font-family: comic sans ms;">
     <div class="ui container">
       <!--header-->
       <div class="ui top attached segment">
         <div class="ui middle aligned two column grid">
           <div class="column">
-            <h3 class="ui teal header">标签</h3>
+            <h3 class="ui dark header">标签</h3>
           </div>
           <div class="right aligned column">
-            共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${#arrays.length(tags)}"> 14 </h2> 个
+            共 <h2 class="ui blue header m-inline-block m-text-thin" th:text="${#arrays.length(tags)}"> 2 </h2> 个
           </div>
         </div>
       </div>
 
       <div class="ui attached segment m-padded-tb-large">
-        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"  class="ui basic left pointing large label m-margin-tb-tiny" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${tags}">
-          <span th:text="${tag.name}">方法论</span> <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
+        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"  class="ui basic left pointing large blue label m-margin-tb-tiny" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${tags}">
+          <span th:text="${tag.name}">理财方法</span> <div class="detail" th:text="${#arrays.length(tag.blogs)}">2</div>
         </a>
       </div>
 
-      <div class="ui top attached teal segment">
+      <div class="ui top attached orange segment">
         <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
           <div class="ui middle aligned mobile reversed stackable grid" >
             <div class="eleven wide column">
@@ -64,24 +104,27 @@
                   <div class="eleven wide column">
                     <div class="ui mini horizontal link list">
                       <div class="item">
-                        <img src="https://unsplash.it/100/100?image=1005" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
-                        <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}" >李仁密</a></div>
+                        <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
+                        <div class="content">
+                  		  <!--点击用户名可以跳转到该用户的个人主页，下面跳转链接还需修改-->
+                  		  <a href="#" th:href="@{/user/{id}(id=${user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
+                  	   </div>
                       </div>
-                      <div class="item">
-                        <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
-                      </div>
-                      <div class="item">
-                        <i class="eye icon"></i> <span th:text="${blog.views}">2342</span>
-                      </div>
+                  	<div class="ml-6 item">
+                  	  <i class="calendar icon mb-1"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
+                  	</div>
+                  	<div class="ml-6 item">
+                  	  <i class="eye icon mb-1"></i>&nbsp;<span th:text="${blog.views}">2342</span>
+                  	</div>
                     </div>
                   </div>
                   <div class="right aligned five wide column">
-                    <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin" th:text="${blog.type.name}">认知升级</a>
+                    <a href="#" target="_blank" class="btn btn-sm btn-outline-dark m-item m-mobile-hide" th:text="${blog.type.name}">&nbsp;&nbsp;相似博文 <i class="angle double right icon"></i></a>
                   </div>
                 </div>
                 <div class="row">
                   <div class="column">
-                    <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui  basic left pointing label m-padded-mini m-text-thin" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</a>
+                    <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui  basic left pointing label m-padded-mini m-text-thin" th:classappend="${tag.id==activeTagId} ? 'blue'" th:each="tag : ${blog.tags}" th:text="${tag.name}">理财方法</a>
                   </div>
                 </div>
               </div>
@@ -89,12 +132,56 @@
 
             <div class="five wide column">
               <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-                <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
+                <img src="../static/images/pic.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
               </a>
             </div>
 
           </div>
         </div>
+		<div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
+		  <div class="ui middle aligned mobile reversed stackable grid" >
+		    <div class="eleven wide column">
+		      <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗?</a></h3>
+		      <p class="m-text" th:text="|${blog.description}......|">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
+		      <div class="ui grid">
+		        <div class="row">
+		          <div class="eleven wide column">
+		            <div class="ui mini horizontal link list">
+		              <div class="item">
+		                <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
+		                <div class="content">
+		          		  <!--点击用户名可以跳转到该用户的个人主页，下面跳转链接还需修改-->
+		          		  <a href="#" th:href="@{/user/{id}(id=${user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
+		          	   </div>
+		              </div>
+		          	<div class="ml-6 item">
+		          	  <i class="calendar icon mb-1"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
+		          	</div>
+		          	<div class="ml-6 item">
+		          	  <i class="eye icon mb-1"></i>&nbsp;<span th:text="${blog.views}">2342</span>
+		          	</div>
+		            </div>
+		          </div>
+		          <div class="right aligned five wide column">
+		            <a href="#" target="_blank" class="btn btn-sm btn-outline-dark m-item m-mobile-hide" th:text="${blog.type.name}">&nbsp;&nbsp;相似博文 <i class="angle double right icon"></i></a>
+		          </div>
+		        </div>
+		        <div class="row">
+		          <div class="column">
+		            <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui  basic left pointing label m-padded-mini m-text-thin" th:classappend="${tag.id==activeTagId} ? 'blue'" th:each="tag : ${blog.tags}" th:text="${tag.name}">理财方法</a>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		
+		    <div class="five wide column">
+		      <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+		        <img src="../static/images/pic.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
+		      </a>
+		    </div>
+		
+		  </div>
+		</div>
 
       </div>
 
@@ -102,10 +189,10 @@
       <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
         <div class="ui middle aligned two column grid">
           <div class="column">
-            <a href="#" th:href="@{'/tags/'+${activeTagId}(page=${page.number}-1)}"  th:unless="${page.first}" class="ui mini teal basic button">上一页</a>
+            <a href="#" th:href="@{'/tags/'+${activeTagId}(page=${page.number}-1)}"  th:unless="${page.first}"  class="btn btn-sm btn-outline-dark" style="width: 3rem;"><i class="angle double left icon mb-1"></i></a>
           </div>
           <div class="right aligned column">
-            <a href="#" th:href="@{'/tags/'+${activeTagId}(page=${page.number}+1)}"  th:unless="${page.last}" class="ui mini teal basic button">下一页</a>
+            <a href="#" th:href="@{'/tags/'+${activeTagId}(page=${page.number}+1)}"  th:unless="${page.last}" class="btn btn-sm btn-outline-dark" style="width: 3rem;"><i class="angle double right icon ml-1 mb-1"></i></a>
           </div>
         </div>
       </div>
@@ -116,8 +203,9 @@
   <br>
   <br>
   <!--底部footer-->
-  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-big">
     <div class="ui center aligned container">
+		<!--
       <div class="ui inverted divided stackable grid">
         <div class="three wide column">
           <div class="ui inverted link list">
@@ -146,8 +234,8 @@
           <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客、会分享关于编程、写作、思考相关的任何内容，希望可以给来到这儿的人有所帮助...</p>
         </div>
       </div>
-      <div class="ui inverted section divider"></div>
-      <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2016 - 2017 Lirenmi Designed by Lirenmi</p>
+      <div class="ui inverted section divider"></div>-->
+     <p class="m-text-thin m-text-spaced m-opacity-tiny" style="font-family: comic sans ms;font-weight: bold;">Personal Blog <br><br> Copyright © 2020 </p>
     </div>
 
   </footer>
