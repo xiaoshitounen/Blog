@@ -62,7 +62,7 @@
 		         <i class="fa icon"></i> 登出
 		       </a>
 		     </div>
-		   </div>-->	
+		   </div>-->
 		   <!--登录后-->
 		 </div>
 	  </div>
@@ -82,7 +82,7 @@
           <div class="ui top attached segment">
             <div class="ui middle aligned two column grid">
               <div class="column">
-                <h3 class="ui black header"><span th:text="${blog.user.nickname}">Mia</span>的博文</h3>
+                <h3 class="ui black header"><span >Mia</span>的博文</h3>
               </div>
               <div class="right aligned column">
                 共 <h2 class="ui blue header m-inline-block m-text-thin" th:text="${page.totalElements}"> 14 </h2> 篇
@@ -105,7 +105,7 @@
                           <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
                           <div class="content">
 							  <!--点击用户名可以跳转到该用户的个人主页，下面跳转链接还需修改-->
-							  <a href="#" th:href="@{/user/{id}(id=${user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
+							  <a href="#" target="_blank"><span >Mia</span></a>
 						   </div>
                         </div>
 						<div class="ml-6 item">
@@ -130,158 +130,7 @@
 
               </div>
             </div>
-            <!--/*-->
-            <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
-              <div class="ui middle aligned mobile reversed stackable grid" >
-                <div class="eleven wide column">
-                  <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗?</a></h3>
-                  <p class="m-text" th:text="|${blog.description}......|">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
-                  <div class="ui grid">
-                    <div class="eleven wide column">
-                      <div class="ui mini horizontal link list">
-                        <div class="item">
-                          <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
-                          <div class="content">
-            				  <!--点击用户名可以跳转到该用户的个人主页，下面跳转链接还需修改-->
-            				  <a href="#" th:href="@{/user/{id}(id=${user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
-            			   </div>
-                        </div>
-            			<div class="ml-6 item">
-            			  <i class="calendar icon mb-1"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
-            			</div>
-            			<div class="ml-6 item">
-            			  <i class="eye icon mb-1"></i>&nbsp;<span th:text="${blog.views}">2342</span>
-            			</div>
-                      </div>
-                    </div>
-                    <div class="right aligned five wide column">
-                      <a href="#" target="_blank" class="btn btn-sm btn-outline-dark m-item m-mobile-hide" th:text="${blog.type.name}">&nbsp;&nbsp;相似博文 <i class="angle double right icon"></i></a>
-                    </div>
-                  </div>
-                </div>
-            
-                <div class="five wide column">
-                  <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-                    <img src="../static/images/pic.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
-                  </a>
-                </div>
-            
-              </div>
-            </div>
-			<!--===================================================-->
-            <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
-              <div class="ui middle aligned mobile reversed stackable grid" >
-                <div class="eleven wide column">
-                  <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗?</a></h3>
-                  <p class="m-text" th:text="|${blog.description}......|">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
-                  <div class="ui grid">
-                    <div class="eleven wide column">
-                      <div class="ui mini horizontal link list">
-                        <div class="item">
-                          <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
-                          <div class="content">
-            				  <!--点击用户名可以跳转到该用户的个人主页，下面跳转链接还需修改-->
-            				  <a href="#" th:href="@{/user/{id}(id=${user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
-            			   </div>
-                        </div>
-            			<div class="ml-6 item">
-            			  <i class="calendar icon mb-1"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
-            			</div>
-            			<div class="ml-6 item">
-            			  <i class="eye icon mb-1"></i>&nbsp;<span th:text="${blog.views}">2342</span>
-            			</div>
-                      </div>
-                    </div>
-                    <div class="right aligned five wide column">
-                      <a href="#" target="_blank" class="btn btn-sm btn-outline-dark m-item m-mobile-hide" th:text="${blog.type.name}">&nbsp;&nbsp;相似博文 <i class="angle double right icon"></i></a>
-                    </div>
-                  </div>
-                </div>
-            
-                <div class="five wide column">
-                  <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-                    <img src="../static/images/pic.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
-                  </a>
-                </div>
-            
-              </div>
-            </div>
-			<!--===================================================-->
-            <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
-              <div class="ui middle aligned mobile reversed stackable grid" >
-                <div class="eleven wide column">
-                  <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗?</a></h3>
-                  <p class="m-text" th:text="|${blog.description}......|">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
-                  <div class="ui grid">
-                    <div class="eleven wide column">
-                      <div class="ui mini horizontal link list">
-                        <div class="item">
-                          <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
-                          <div class="content">
-            				  <!--点击用户名可以跳转到该用户的个人主页，下面跳转链接还需修改-->
-            				  <a href="#" th:href="@{/user/{id}(id=${user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
-            			   </div>
-                        </div>
-            			<div class="ml-6 item">
-            			  <i class="calendar icon mb-1"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
-            			</div>
-            			<div class="ml-6 item">
-            			  <i class="eye icon mb-1"></i>&nbsp;<span th:text="${blog.views}">2342</span>
-            			</div>
-                      </div>
-                    </div>
-                    <div class="right aligned five wide column">
-                      <a href="#" target="_blank" class="btn btn-sm btn-outline-dark m-item m-mobile-hide" th:text="${blog.type.name}">&nbsp;&nbsp;相似博文 <i class="angle double right icon"></i></a>
-					</div>
-                  </div>
-                </div>
-            
-                <div class="five wide column">
-                  <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-                    <img src="../static/images/pic.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
-                  </a>
-                </div>
-            
-              </div>
-            </div>
-			<!--===================================================-->
-			<div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
-			  <div class="ui middle aligned mobile reversed stackable grid" >
-			    <div class="eleven wide column">
-			      <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗?</a></h3>
-			      <p class="m-text" th:text="|${blog.description}......|">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
-			      <div class="ui grid">
-			        <div class="eleven wide column">
-			          <div class="ui mini horizontal link list">
-			            <div class="item">
-			              <img src="../static/images/user8-128x128.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
-			              <div class="content">
-							  <!--点击用户名可以跳转到该用户的个人主页，下面跳转链接还需修改-->
-							  <a href="#" th:href="@{/user/{id}(id=${user.id})}" target="_blank"><span th:text="${blog.user.nickname}">Mia</span></a>
-						   </div>
-			            </div>
-						<div class="ml-6 item">
-						  <i class="calendar icon mb-1"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
-						</div>
-						<div class="ml-6 item">
-						  <i class="eye icon mb-1"></i>&nbsp;<span th:text="${blog.views}">2342</span>
-						</div>
-			          </div>
-			        </div>
-			        <div class="right aligned five wide column">
-			          <a href="#" target="_blank" class="btn btn-sm btn-outline-dark m-item m-mobile-hide" th:text="${blog.type.name}">&nbsp;&nbsp;相似博文 <i class="angle double right icon"></i></a>
-			        </div>
-			      </div>
-			    </div>
-			
-			    <div class="five wide column">
-			      <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-			        <img src="../static/images/pic.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
-			      </a>
-			    </div>
-			
-			  </div>
-			</div>
+
           </div>
 
           <!--footer-->
@@ -467,7 +316,7 @@
         </div>
       </div>
       <div class="ui inverted section divider"></div>-->
-      <p class="m-text-thin m-text-spaced m-opacity-tiny" style="font-family: comic sans ms;font-weight: bold;">Personal Blog <br><br> Copyright © 2020 <span th:text="${blog.user.nickname}">Mia</span></p>
+      <p class="m-text-thin m-text-spaced m-opacity-tiny" style="font-family: comic sans ms;font-weight: bold;">Personal Blog <br><br> Copyright © 2020 <span >Mia</span></p>
     </div>
 
   </footer>
