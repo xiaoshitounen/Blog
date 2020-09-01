@@ -37,9 +37,12 @@ public class LoginController {
                         RedirectAttributes attributes) {
         User user = userService.checkUser(username, password);
         if (user != null) {
+            /*user.setPassword(null);
+            session.setAttribute("user",user);
+            return "index";*/
             user.setPassword(null);
             session.setAttribute("user",user);
-            return "admin/index";
+            return "redirect:/";
         } else {
             attributes.addFlashAttribute("message", "用户名和密码错误");
             return "redirect:/admin";
@@ -49,6 +52,6 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
-        return "redirect:/admin";
+        return "redirect:/";
     }
 }
