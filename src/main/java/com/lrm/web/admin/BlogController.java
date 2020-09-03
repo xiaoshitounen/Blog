@@ -66,6 +66,8 @@ public class BlogController {
     private void setTypeAndTag(Model model) {
         model.addAttribute("types", typeService.listType());
         model.addAttribute("tags", tagService.listTag());
+        System.out.println("分类的数量："+typeService.listType().size());
+        System.out.println("标签的数量："+tagService.listTag().size());
     }
 
 

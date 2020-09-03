@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:fragment="head(title)">
+  <base th:href="@{/}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title th:replace="${title}">博客详情</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
   <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
   <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
-  <link rel="stylesheet" href="../../static/css/dashboard.css">
-  <script src="../../static/js/jquery.min.js"></script>
-  <script src="../../static/js/bootstrap.bundle.js"></script>
+  <link rel="stylesheet" href="../../static/css/dashboard.css" th:href="@{/css/dashboard.css}">
 </head>
 <body>
 
@@ -22,21 +21,18 @@
       <a href="#" th:href="@{/admin/types}" class=" m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
       <a href="#" th:href="@{/admin/tags}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
       <div class="right m-item m-mobile-hide menu">
-		  <div class="ui dropdown item">
+		  <div class="dropdown" style="top:0;bottom:0;margin: auto;">
 		    <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
 		    <!--以下和源代码表示不同，需要重新修改资源定向语句-->
-		      <span class="avatar" style="background-image: url(../../static/images/user8-128x128.jpg);" th:src="@{${session.user.avatar}}"></span>
+		      <span class="avatar" th:style="'background-image: url(' + ${session.user.avatar} + ')'" style="background-image: url(../../static/images/user8-128x128.jpg);"></span>
 		      <span class="ml-2 d-none d-lg-block">
 		        <span class="text-white" th:text="${session.user.nickname}">Mia</span>
-		        <small class="text-muted d-block mt-1" th:text="${session.user.userid}">ID：53072</small>
+		        <small class="text-muted d-block mt-1" th:text="${session.user.email}">ID：53072</small>
 		      </span>
 		    </a>
 		    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-		      <a class="dropdown-item" href="changeuser.html">
-		        <i class="settings icon"></i> 修改个人信息
-		      </a>
-		      <a class="dropdown-item" href="admin/blogs.html">
-		        <i class="edit icon"></i> 管理博客
+		      <a class="dropdown-item" href="#" th:href="@{/}">
+		        <i class="edit icon"></i> 返回主页
 		      </a>
 		      <a class="dropdown-item" href="#" th:href="@{/admin/logout}">
 		        <i class="fa icon"></i> 登出
@@ -97,8 +93,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
   <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
-
-
 </th:block>
 
 </body>

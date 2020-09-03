@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客注册</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet" href="../static/css/me.css">
+  <link rel="stylesheet" href="../static/css/dashboard.css">
+</head>
+<body>
+
+<br>
+<br>
+<br>
+ <div class="m-container-small m-padded-tb-massive" style="max-width: 30em !important; align-content: center">
+   <div class="ur container">
+     <div class="ui middle aligned center aligned grid">
+       <div class="column">
+         <h2 class="ui image header" style="color: #00A8C6;">
+           <div class="content">
+             用户注册
+           </div>
+         </h2>
+         <form class="ui large form" method="post" action="#" th:action="@{/register/do}" id="reg-form">
+           <div class="ui  segment">
+             <div class="field">
+               <div class="ui left icon input">
+                 <i class="user icon"></i>
+                 <input type="text" name="username" placeholder="用户名">
+               </div>
+             </div>
+			 <div class="field">
+			   <div class="ui left icon input">
+			     <i class="mail icon"></i>
+			     <input type="email" name="email" placeholder="邮箱"  class="form-control" id="email" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:black;" ajax-message="这个Email地址已经被注册过啦，换一个试试哦">
+			   </div>
+			 </div>
+			 <div class="field">
+			   <div class="ui left icon input">
+			     <i class="at icon"></i>
+			     <input type="text" name="nickname" placeholder="昵称">
+			   </div>
+			 </div>
+             <div class="field">
+			  <div class="row">
+               <div class="ui left icon input col-6">
+                 <i class="lock icon ml-3"></i>
+                 <input type="password" placeholder="密码" id="password" easyform="length:6-16;" message="密码必须为6—16位" easytip="disappear:lost-focus;theme:black;" maxlength="20">
+               </div>
+			   <div class="ui left icon input col-6">
+			     <i class="lock icon ml-3"></i>
+			     <input type="password" name="password" placeholder="确认密码" id="ConfirmPassword" maxlength="20" required="" easyform="length:6-16;equal:#password;" message="两次密码输入要一致" easytip="disappear:lost-focus;theme:black;">
+			   </div>
+			   </div>
+             </div>
+             <button class="ui fluid large submit button" style="background: #00A8C6;color: white;">注   册</button>
+           </div>
+
+
+         </form>
+
+       </div>
+     </div>
+   </div>
+ </div>
+
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
+<script src="../static/js/easyform.js"></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+   $('#reg-form').easyform();
+  });
+</script>
+ <script>
+     function Cmd(){
+      var ipt = document.getElementById("reg-form").getElementsByTagName("input"); //查找divbox这个div里的所有文本框
+	          for(var i = 0; i < ipt.length; i++){ //循环
+	              if(ipt[i].value.length == 0){ //如果其中一个文本框没有填写
+	                  alert("先别急，还没填完信息喔"); //弹出提示
+	                  ipt[i].focus(); //定位到没有填写的文本框
+	                  return false; //返回false
+	              }
+	          }
+	          location.href='Stuff_login.html';
+	   }
+	  </script>
+
+</body>
+</html>

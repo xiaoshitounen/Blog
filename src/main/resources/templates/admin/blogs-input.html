@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
   <link rel="stylesheet" href="../../static/css/me.css">
   <link rel="stylesheet" href="../../static/css/dashboard.css">
-  <script src="../../static/js/jquery.min.js"></script>
-  <script src="../../static/js/bootstrap.bundle.js"></script>
 </head>
 <body>
 
@@ -113,6 +111,7 @@
               </div>
             </div>
           </div>
+
         </div>
 
         <div class="required field">
@@ -210,7 +209,6 @@
   <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
   <!--/*/</th:block>/*/-->
 
-
   <script>
 
     //初始化Markdown编辑器
@@ -242,8 +240,6 @@
       $('[name="published"]').val(true);
       $('#blog-form').submit();
     });
-
-
 
     $('.ui.form').form({
       fields : {
@@ -286,5 +282,8 @@
     });
 
   </script>
+
+  <script src="../static/js/bootstrap.bundle.js" th:src="@{js/bootstrap.bundle.js}"></script>
+
 </body>
 </html>
