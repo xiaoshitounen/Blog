@@ -8,6 +8,8 @@ import com.lrm.service.TagService;
 import com.lrm.service.TypeService;
 import com.lrm.vo.BlogQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by limi on 2017/10/15.
@@ -45,6 +49,27 @@ public class BlogController {
                         BlogQuery blog, Model model) {
         model.addAttribute("types", typeService.listType());
         model.addAttribute("page", blogService.listBlog(pageable, blog));
+        return LIST;
+    }
+
+    @GetMapping("/blogs/{id}")
+    public String blogs(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+                        BlogQuery blog, Model model, @PathVariable Long id) {
+        model.addAttribute("types", typeService.listType());
+
+        List<Blog> blogOfUser = new ArrayList<>();
+
+        Page<Blog> blogs = blogService.listBlog(pageable, blog);
+        for (Blog temp : blogs) {
+            if (temp.getUser().getId().equals(id)) {
+                blogOfUser.add(temp);
+            }
+        }
+
+        Page<Blog> pageOfUsers = new PageImpl<>(blogOfUser);
+
+        model.addAttribute("page", pageOfUsers);
+
         return LIST;
     }
 
