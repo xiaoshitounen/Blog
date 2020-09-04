@@ -11,4 +11,6 @@ public interface UserService {
     User checkUser(String username, String password);
 
     User registerUser(User user);
+
+    User findUserById(Long id);
 }

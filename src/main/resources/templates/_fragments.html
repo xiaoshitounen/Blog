@@ -64,7 +64,7 @@
            <a class="dropdown-item" href="admin/blogs.html" th:href="@{/archives/{id}(id=${session.user.id})}">
              <i class="clone icon"></i> 归档
            </a>
-           <a class="dropdown-item" href="admin/blogs.html" th:href="@{/about}">
+           <a class="dropdown-item" href="admin/blogs.html" th:href="@{/about/{id}(id=${session.user.id})}">
              <i class="info icon"></i> 关于我
            </a>
            <a class="dropdown-item" href="#" th:href="@{admin/logout}">

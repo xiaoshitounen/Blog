@@ -79,7 +79,7 @@
       <div class="ui stackable grid">
         <div class="eleven wide column">
           <div class="ui segment">
-            <img th:src="@{${session.user.avatar}}" src="../static/images/avatar.jpg" style="margin:0 auto;max-height: 35rem;" class="ui rounded image">
+            <img th:src="@{${user.avatar}}" src="../static/images/avatar.jpg" style="margin:0 auto;max-height: 35rem;" class="ui rounded image">
           </div>
         </div>
         <div class="five wide column">
@@ -87,7 +87,7 @@
             <div class="ui header">关于我</div>
           </div>
           <div class="ui attached segment">
-            <p class="m-text"><span th:text="${session.user.nickname}">>Mia</span>，一个名副其实的干物妹，喜爱宅家生活；一个终身学习者和科研拖延症患者，追剧之余缓慢推进老板交代的一切工作. 喜欢折腾自己去做好感兴趣的一切东西，喜欢记录美好的瞬间和学习的足迹. 努力结识共同成长的朋友们.</p>
+            <p class="m-text"><span th:text="${user.nickname}">>Mia</span>，一个名副其实的干物妹，喜爱宅家生活；一个终身学习者和科研拖延症患者，追剧之余缓慢推进老板交代的一切工作. 喜欢折腾自己去做好感兴趣的一切东西，喜欢记录美好的瞬间和学习的足迹. 努力结识共同成长的朋友们.</p>
             <p class="m-text">热爱编程、旅游，喜欢折腾，正在探索科研的玄学之道...</p>
           </div>
           <div class="ui attached segment">
