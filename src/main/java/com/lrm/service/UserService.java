@@ -13,4 +13,6 @@ public interface UserService {
     User registerUser(User user);
 
     User findUserById(Long id);
+
+    void updateUser(Long id, User user);
 }

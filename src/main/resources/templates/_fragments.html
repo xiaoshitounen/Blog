@@ -55,7 +55,7 @@
             </span>
          </a>
          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-           <a class="dropdown-item" href="changeuser.html">
+           <a class="dropdown-item" href="changeuser.html" th:href="@{/edit/{id}(id=${session.user.id})}">
             <i class="settings icon"></i> 修改个人信息
            </a>
            <a class="dropdown-item" href="admin/blogs.html" th:href="@{/admin/blogs/{id}(id=${session.user.id})}">

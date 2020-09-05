@@ -1,8 +1,10 @@
 package com.lrm.service;
 
+import com.lrm.NotFoundException;
 import com.lrm.dao.UserRepository;
 import com.lrm.po.User;
 import com.lrm.util.MD5Utils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserById(Long id) {
         return userRepository.findOne(id);
+    }
+
+    @Override
+    public void updateUser(Long id, User user) {
+        User u = userRepository.findOne(id);
+
+        if (u == null) {
+            throw new NotFoundException("不存在该类型");
+        }
+        BeanUtils.copyProperties(user,u);
+        userRepository.save(u);
     }
 
 
