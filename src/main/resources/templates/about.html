@@ -84,7 +84,9 @@
         </div>
         <div class="five wide column">
           <div class="ui top attached segment">
-            <div class="ui header">关于我</div>
+            <a href="#" th:href="@{/archives/{id}(id=${user.id})}">
+              <div class="ui header">我的文章</div>
+            </a>
           </div>
           <div class="ui attached segment">
             <p class="m-text"><span th:text="${user.nickname}">>Mia</span>，一个名副其实的干物妹，喜爱宅家生活；一个终身学习者和科研拖延症患者，追剧之余缓慢推进老板交代的一切工作. 喜欢折腾自己去做好感兴趣的一切东西，喜欢记录美好的瞬间和学习的足迹. 努力结识共同成长的朋友们.</p>
