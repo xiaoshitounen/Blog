@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
   <link rel="stylesheet" href="../static/css/me.css">
   <link rel="stylesheet" href="../static/css/dashboard.css">
-  <script src="../static/js/jquery.min.js"></script>
-  <script src="../static/js/bootstrap.bundle.js"></script>
 </head>
 <body>
 
@@ -702,7 +700,6 @@ h5,h6{font-size:1em;}
 <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
   <!--/*/</th:block>/*/-->
 
-
   <script th:inline="javascript">
 
     $('.menu.toggle').click(function () {
@@ -839,5 +836,9 @@ h5,h6{font-size:1em;}
 
     
   </script>
+
+  <script src="../static/js/bootstrap.bundle.js" th:src="@{js/bootstrap.bundle.js}"></script>
+  <script src="../static/js/easyform.js" th:src="@{js/easyform.js}"></script>
+
 </body>
 </html>
